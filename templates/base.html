@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SQL webapp</title>
+	<link rel='stylesheet' href="'{{url_for('static',filename='bootstrap.min.css')}}">
+	<script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+	<script src="{{url_for('static', filename='jquery-1.11.3.js')}}"></script>
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class='container-fluid'>
+				<a class='navbar-brand' href="/">
+					SQL dev webapp
+				</a>
+				{% if not session.logged %}
+				<p class='navbar-text navbar-right login'>
+				<a href="/login">Login</a>
+				</p>	
+				{% else %}
+				<p class='navbar-text navbar-right logout'>
+				<a href="/logout">Logout</a>
+				</p>
+				{% endif %}
+				
+			</div>
+
+		</nav>
+
+	</div>
+
+</body>
+{% block body %} {% endblock %}
+</html>

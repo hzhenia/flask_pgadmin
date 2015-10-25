@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block body %}
+{% if session.logged %}
+<form action="{{url_for('query')}}" method=post>
+	<dl>
+		<strong>SQL query</strong>
+		<input type="text" site=1024 name=query class=input>
+		<input type="submit" value=Execute class="btn btn-primary btm-sm">
+	</dl>
+</form>
+<div id="content">
+	<table class='table table-stripped'>
+		{% for row in table %}
+		<tr>
+			{% for cell in row %}
+			<td> {{cell}} </td>
+			{% endfor %}
+
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endif %}
+{% endblock %}
