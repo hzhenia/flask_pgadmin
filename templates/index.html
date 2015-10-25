@@ -4,7 +4,15 @@
 <form action="{{url_for('query')}}" method=post>
 	<dl>
 		<strong>SQL query</strong>
-		<input type="text" site=1024 name=query class=input>
+		<br/>
+		<pre class="prettyprint">
+                {% if sql_query %}
+		     <input type="text" value= {{sql_query}}  name="query" class='sqlquery prettyprint' >
+                {% else %}
+	   	     <input type="text"  name="query" class='sqlquery prettyprint' >
+                {% endif %}
+
+		</pre>
 		<input type="submit" value=Execute class="btn btn-primary btm-sm">
 	</dl>
 </form>

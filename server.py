@@ -7,9 +7,8 @@ app.config.from_pyfile('config.cfg')
 @app.route('/')
 def index():
     table = {}
-
     print "index"
-    return render_template("index.html", table=table)
+    return render_template("index.html", table=table, sqlquery="")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -34,9 +33,12 @@ def logout():
 @app.route('/query', methods=['POST'])
 def query():
     if request.method == 'POST':
-        query = request.form['query']
-
-    return redirect(url_for('index'))
+        sql_query = request.form['query']
+    table = [['col1', 'col2', 'col3'], [1,2,3]]
+    print sql_query
+   
+    # return redirect(url_for('index', table=table))
+    return render_template("index.html", table=table,sql_query=sql_query)
 
 
 if __name__ == "__main__":
